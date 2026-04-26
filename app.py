@@ -9,13 +9,10 @@ from typing import Any, Dict, List
 
 import streamlit as st
 
-from fdd_parser_core_locked import parse_debug_items, process_pdf
+from fdd_parser_core_locked import process_pdf
 
 
 APP_TITLE = "FDD Item Splitter"
-DEFAULT_DEBUG_ITEMS = "9,10,11,12,13"
-
-
 st.set_page_config(
     page_title=APP_TITLE,
     page_icon="📄",
@@ -142,7 +139,8 @@ with tempfile.TemporaryDirectory() as tmp:
     pdf_paths = sorted(input_dir.glob("*.pdf"))
     results: List[Dict[str, Any]] = []
     combined_log = io.StringIO()
-    debug_items = parse_debug_items(debug_items_text)
+    debug = False
+    debug_items: List[int] = []
 
     progress = st.progress(0, text="Preparing files...")
 
@@ -207,6 +205,3 @@ with tempfile.TemporaryDirectory() as tmp:
             use_container_width=True,
         )
 
-    if debug:
-        with st.expander("Diagnostics log", expanded=True):
-            st.code(combined_log.getvalue() or "No diagnostics printed.", language="text")
