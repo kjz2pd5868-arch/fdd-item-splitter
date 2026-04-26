@@ -114,11 +114,6 @@ uploaded_files = st.file_uploader(
     help="You can upload one PDF or several PDFs at once.",
 )
 
-with st.expander("Advanced diagnostics", expanded=False):
-    debug = st.checkbox("Show item boundary diagnostics", value=False)
-    debug_items_text = st.text_input("Diagnostic items", value=DEFAULT_DEBUG_ITEMS)
-    st.caption("Leave this off for normal use. Turn it on only when checking a bad split.")
-
 split_clicked = st.button(
     "Split FDDs",
     type="primary",
