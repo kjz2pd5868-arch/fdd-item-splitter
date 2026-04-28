@@ -95,7 +95,7 @@ NOISE_RE = re.compile(
     r"^\w[\w\- ]+\s+\d{4}\s*$",
     re.I,
 )
-ITEM_LINE_RE = re.compile(r"^\s*(?:U\s*)?ITEM\s+([1-9]|1\d|2[0-3])(?:\s*U)?\s*[:\.]?\s*(.*)$", re.I)
+ITEM_LINE_RE = re.compile(r"^\s*(?:U\s*)?ITEM\s+((?:1\d)|(?:2[0-3])|[1-9])\s*(?:U)?\b\s*[:\.]?\s*(.*)$", re.I)
 TOC_RE = re.compile(r"table\s+of\s+contents", re.I)
 DOT_LEADER_RE = re.compile(r"\.{3,}|_{3,}|\s\d{1,3}\s*$")
 CONTRACT_START_RE = re.compile(r"\bFRANCHISE AGREEMENT\b", re.I)
